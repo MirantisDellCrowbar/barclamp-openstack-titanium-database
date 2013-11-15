@@ -61,12 +61,11 @@ default["percona"]["server"]["language"]                        = "/usr/share/my
 default["percona"]["server"]["skip_external_locking"]           = true
 default["percona"]["server"]["net_read_timeout"]                = 120
 default["percona"]["server"]["old_passwords"]                   = 1
-default["percona"]["server"]["bind_address"]                    = "0.0.0.0"
+default["percona"]["server"]["bind_address"]                    = ""
 %w[debian_password root_password].each do |attribute|
   next if defined?(node["percona"]["server"][attribute])
   default["percona"]["server"][attribute]                       = secure_password
 end
-default['percona']['server']['bind_to']				= "private_ip"
 
 # Fine Tuning
 default["percona"]["server"]["key_buffer"]                      = "16M"
