@@ -84,6 +84,8 @@ old_passwords = <%= @old_passwords %>
 # localhost which is more compatible and is not less secure.
 <% if !node["percona"]["server"]["bind_address"].empty? %>
 bind-address = <%= node["percona"]["server"]["bind_address"] %>
+<% else %>
+bind-address = <%= Chef::Recipe::Barclamp::Inventory.get_network_by_type(node, "admin").address%>
 <% end %>
 
 #
